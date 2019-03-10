@@ -1,0 +1,33 @@
+version: '3'
+services:
+  postgres:
+    image: postgres:latest
+    hostname:
+      postgres
+    ports:
+      - 5432:5432
+    networks:
+      - xptobackend
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+      POSTGRES_DB: xptodatabase
+    volumes:
+      - ./init:/docker-entrypoint-initdb.d/
+  service:
+    depends_on:
+      - postgres
+    image: rafaeldbl/xpto-microservice
+    build:
+      context:
+        ./../
+      dockerfile:
+        Dockerfile
+    ports:
+      - 8080:8080
+    networks:
+      - xptobackend
+
+networks:
+  xptobackend:
+    driver: bridge
