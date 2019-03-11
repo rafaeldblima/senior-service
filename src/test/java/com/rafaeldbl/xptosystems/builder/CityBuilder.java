@@ -17,6 +17,18 @@ public class CityBuilder {
         return oneCity(1L, "City 1");
     }
 
+    public static List<City> capitalListCity(int length) {
+        List<City> cities = cityList(length);
+        cities.forEach(city1 -> city1.setCapital(true));
+        return cities;
+    }
+
+    public static List<City> listWithUF(int length, String uf) {
+        List<City> cities = cityList(length);
+        cities.forEach(city1 -> city1.setUf(uf));
+        return cities;
+    }
+
     public static List<City> cityList(int length) {
         List<City> cities = new ArrayList<>(ImmutableList.of());
         for (long i = 0; i < length; i++) {
@@ -38,11 +50,18 @@ public class CityBuilder {
         city.setMesoregion("Meso" + name);
         city.setMicroregion("Micro" + name);
         city.setCapital(false);
+        city.setLongitude((float) -id);
+        city.setLatitude((float) id);
         return builder;
     }
 
     public CityBuilder withId(long id) {
         city.setId(id);
+        return this;
+    }
+
+    public CityBuilder withIbgeId(long ibgeId) {
+        city.setIbgeId(ibgeId);
         return this;
     }
 

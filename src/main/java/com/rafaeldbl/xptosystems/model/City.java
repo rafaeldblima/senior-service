@@ -53,6 +53,12 @@ public class City {
     @Column(name = "capital")
     private boolean isCapital;
 
+    @Column(name = "lat")
+    private Float latitude;
+
+    @Column(name = "lon")
+    private Float longitude;
+
     @Column(name = "created_at")
     @CreatedDate
     @Temporal(TemporalType.TIMESTAMP)

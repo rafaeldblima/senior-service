@@ -1,7 +1,9 @@
 package com.rafaeldbl.xptosystems.service.impl;
+
 import com.rafaeldbl.xptosystems.exception.EntityInvalidException;
 import com.rafaeldbl.xptosystems.service.IGenericService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Example;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Sort;
@@ -31,6 +33,11 @@ public class GenericService<T, ID extends Serializable> implements IGenericServi
     @Override
     public List<T> getAll() {
         return repository.findAll();
+    }
+
+    @Override
+    public List<T> search(Example<T> entity) {
+        return repository.findAll(entity);
     }
 
     @Override
