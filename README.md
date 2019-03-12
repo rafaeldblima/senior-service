@@ -31,7 +31,8 @@
    
       **Warning**
       
-      > Must have a postgres server installed with login and password **postgres** and a database called **xptodatabase** on port **5432**
+      > Must have a postgres server installed with login and password **postgres** and a database called **xptodatabase** on port **5432**.
+      Or You can just go to infra folder and user docker-compose up -d postgres
   
       1. Prepare PostgreSQL
    
